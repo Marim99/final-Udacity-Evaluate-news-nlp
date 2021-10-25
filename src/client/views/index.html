@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sentiment Analyzer</title>
+    <link href="/styles/resets.css" />
+    <link href="/styles/base.css" />
+    <link href="/styles/header.css" />
+    <link href="/styles/form.css" />
+    <link href="/styles/footer.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="">EvaluateNews</div>
+    </header>
+    <main>
+      <div class="container">
+        <p>Enter a URL of an article / a blog to discover its sentiment.</p>
+        <section>
+          <form id="form">
+            <label for="article-url">URL</label>
+            <input
+              id="article-url"
+              type="text"
+              name="input"
+              value=""
+              placeholder="Enter Article URL"
+            />
+            <input
+              type="submit"
+              name=""
+              value="submit"
+              onclick="return Client.handleSubmit(event)"
+              onsubmit="return handleSubmit(event)"
+            />
+          </form>
+        </section>
+
+        <section class="result-box">
+          <strong>Form Results:</strong>
+          <div class="result" id="article-text"></div>
+          <div class="result" id="article-agreement"></div>
+          <div class="result" id="article-subjectivity"></div>
+          <div class="result" id="article-confidence"></div>
+          <div class="result" id="article-irony"></div>
+          <div class="result" id="article-score_tag"></div>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <p>Created By Marim Khaled @copy2022</p>
+    </footer>
+    <script>
+      // Check that service workers are supported
+      if ("serviceWorker" in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js");
+        });
+      }
+    </script>
+  </body>
+</html>

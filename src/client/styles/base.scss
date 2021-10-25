@@ -1,0 +1,21 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 2;
+}
+
+section {
+  max-width: 600px;
+  margin: 60px auto;
+  strong {
+    color: rgb(197, 26, 26);
+  }
+  .result {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+}
