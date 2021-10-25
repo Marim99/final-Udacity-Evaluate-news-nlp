@@ -12,14 +12,22 @@
 
   <body>
     <header>
-      <div class="">EvaluateNews</div>
+      <div class="logo">EvaluateNews</div>
     </header>
     <main>
       <div class="container">
-        <p>Enter a URL of an article / a blog to discover its sentiment.</p>
+        <p class="container-title">
+          Enter a URL of an article / a blog to discover its sentiment.
+        </p>
+
+        <iframe
+          src="https://giphy.com/embed/rNtchZTL8RAtO"
+          width="343"
+          height="300"
+        ></iframe>
         <section>
           <form id="form">
-            <label for="article-url">URL</label>
+            <label for="article-url">Your URL</label>
             <input
               id="article-url"
               type="text"
@@ -29,8 +37,8 @@
             />
             <input
               type="submit"
-              name=""
               value="submit"
+              name=""
               onclick="return Client.handleSubmit(event)"
               onsubmit="return handleSubmit(event)"
             />
@@ -41,15 +49,15 @@
           <strong>Form Results:</strong>
           <div class="result" id="article-text"></div>
           <div class="result" id="article-agreement"></div>
-          <div class="result" id="article-subjectivity"></div>
-          <div class="result" id="article-confidence"></div>
           <div class="result" id="article-irony"></div>
+          <div class="result" id="article-subjectivity"></div>
           <div class="result" id="article-score_tag"></div>
+          <div class="result" id="article-confidence"></div>
         </section>
       </div>
     </main>
     <footer>
-      <p>Created By Marim Khaled @copy2022</p>
+      <div><p>Created By Marim Khaled @copy2022</p></div>
     </footer>
     <script>
       // Check that service workers are supported

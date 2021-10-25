@@ -10,12 +10,16 @@ main {
 
 section {
   max-width: 600px;
-  margin: 60px auto;
-  strong {
+  margin: 60px;
+  .strong {
     color: rgb(197, 26, 26);
   }
   .result {
     margin-top: 10px;
     font-weight: bold;
+    margin-bottom: 15px;
   }
+}
+.container-title {
+  margin: 20px;
 }

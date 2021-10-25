@@ -11,9 +11,3 @@ describe("Testing, the checkURL function to be defined", () => {
     expect(checkURL).toBeDefined();
   });
 });
-
-describe("Testing, the checkURL function to be a function", () => {
-  test("to be a function", () => {
-    expect(typeof checkURL).toBe("function");
-  });
-});

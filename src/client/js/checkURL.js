@@ -1,11 +1,7 @@
-
-function checkURL(url){
-  const regex=url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)
-  if(regex==null){
-      return false
-  }else{
-      return true
-  }
+function checkURL(url) {
+  var expressionUrl =
+    /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+  var regexp = new RegExp(expressionUrl);
+  return regexp.test(url);
 }
-
-export {checkURL}
+export { checkURL };

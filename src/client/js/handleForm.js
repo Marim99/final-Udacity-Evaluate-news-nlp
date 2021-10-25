@@ -1,46 +1,51 @@
 function handleSubmit(e) {
   e.preventDefault();
-  let url = document.getElementById("article-url").value;
-  if (Client.checkURL(url)) {
-    console.log("form submitted");
-    postData("http://localhost:8081/add-url", { url }).then((data) => {
-      document.getElementById(
-        "article-text",
-      ).innerHTML = `text: ${data.sentence_list[0].text}`;
-      document.getElementById(
-        "article-agreement",
-      ).innerHTML = `agreement: ${data.agreement}`;
-      document.getElementById(
-        "article-subjectivity",
-      ).innerHTML = `subjectivity: ${data.subjectivity}`;
-      document.getElementById(
-        "article-confidence",
-      ).innerHTML = `confidence: ${data.confidence}`;
-      document.getElementById(
-        "article-irony",
-      ).innerHTML = `irony: ${data.irony}`;
-      document.getElementById(
-        "article-score_tag",
-      ).innerHTML = `score_tag: ${data.score_tag}`;
-    });
-  } else {
-    alert("invaild URL,Please Enter New URL");
-  }
+  let url = document.querySelector("#article-url").value;
+  showData(url);
 }
-const postData = async (url = "", data = {}) => {
-  const response = await fetch(url, {
+
+const post = async (url = "", data = {}) => {
+  const urlResponse = await fetch(url, {
     method: "POST",
-    credentials: "same-origin",
     mode: "cors",
+    credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
   });
   try {
-    return await response.json();
-  } catch (error) {
-    console.log(error);
+    return await urlResponse.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const showData = (url) => {
+  if (Client.checkURL(url)) {
+    console.log(":: form submitted!!! ::");
+    post("http://localhost:8081/add-url", { url: url }).then((urlData) => {
+      document.querySelector(
+        "#article-text",
+      ).innerHTML = `Text of the article: ${urlData.sentence_list[0].text}`;
+      document.querySelector(
+        "#article-agreement",
+      ).innerHTML = `Agreement of the article: ${urlData.agreement}`;
+      document.querySelector(
+        "#article-subjectivity",
+      ).innerHTML = `Subjectivity of the article: ${urlData.subjectivity}`;
+      document.querySelector(
+        "#article-confidence",
+      ).innerHTML = `Confidence of the article: ${urlData.confidence}`;
+      document.querySelector(
+        "#article-irony",
+      ).innerHTML = `Irony of the article: ${urlData.irony}`;
+      document.querySelector(
+        "#article-score_tag",
+      ).innerHTML = `Score_tag of the article: ${urlData.score_tag}`;
+    });
+  } else {
+    alert("invaild URL,Please Enter New URL");
   }
 };
 export { handleSubmit };
