@@ -38,9 +38,6 @@ const showData = (url) => {
         "#article-confidence",
       ).innerHTML = `Confidence of the article: ${urlData.confidence}`;
       document.querySelector(
-        "#article-irony",
-      ).innerHTML = `Irony of the article: ${urlData.irony}`;
-      document.querySelector(
         "#article-score_tag",
       ).innerHTML = `Score_tag of the article: ${urlData.score_tag}`;
     });
