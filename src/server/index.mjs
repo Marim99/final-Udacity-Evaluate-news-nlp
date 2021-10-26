@@ -40,7 +40,6 @@ app.get("/test", function (req, res) {
 app.get("/", function (req, res) {
   res.sendFile("dist/index.html");
 });
-app.listen(port, (error) => {
-  if (error) throw new Error(error);
+app.listen((port) => {
   console.log(`Server listening on port ${port}!`);
 });
