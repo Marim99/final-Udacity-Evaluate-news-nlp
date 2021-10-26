@@ -4,8 +4,7 @@ import { handleSubmit } from "./js/handleForm";
 import "./styles/header.scss";
 import "./styles/base.scss";
 import "./styles/resets.scss";
-import "./styles/form.scss";
-import "./styles/footer.scss";
+import "./styles/style.scss";
 
 console.log("exsisting");
 

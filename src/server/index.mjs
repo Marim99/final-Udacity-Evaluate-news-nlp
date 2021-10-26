@@ -1,9 +1,9 @@
 import dotenv from "dotenv";
 dotenv.config();
-//import path from "path";
-import express from "express";
+import path from "path";
 import aylien from "aylien_textapi";
 import bodyParser from "body-parser";
+import express from "express";
 import cors from "cors";
 import mockAPIResponse from "./mockAPI.js";
 import fetch from "node-fetch";
