@@ -7,7 +7,7 @@ import express from "express";
 import cors from "cors";
 import mockAPIResponse from "./mockAPI.js";
 import fetch from "node-fetch";
-const port = 8081; //server port 8081
+const PORT = 8081; //server port 8081
 const app = express();
 
 app.use(cors());
@@ -40,6 +40,7 @@ app.get("/test", function (req, res) {
 app.get("/", function (req, res) {
   res.sendFile("dist/index.html");
 });
-app.listen((port) => {
-  console.log(`Server listening on port ${port}!`);
+
+app.listen(PORT, function () {
+  console.log("Example app listening on port 8080!");
 });

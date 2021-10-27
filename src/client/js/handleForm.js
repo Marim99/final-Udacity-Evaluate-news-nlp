@@ -1,48 +1,40 @@
-function handleSubmit(e) {
-  e.preventDefault();
-  let url = document.querySelector("#article-url").value;
-  showData(url);
-}
-
-const post = async (url = "", data = {}) => {
+const postDetails = async (url = "", data = {}) => {
   const urlResponse = await fetch(url, {
     method: "POST",
     mode: "cors",
     credentials: "same-origin",
+    body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
   });
   try {
     return await urlResponse.json();
   } catch (err) {
-    console.log(err);
+    `<script>alert(${err})</script>`;
   }
 };
+const fetchUrl = "http://localhost:8081/add-url";
+function handleSubmit(event) {
+  event.preventDefault();
 
-const showData = (url) => {
+  // check what text was put into the form field
+  let url = document.querySelector("#article-url").value;
+  console.log("::: Form Submitted :::");
+  fetch("http://localhost:8081/test");
   if (Client.checkURL(url)) {
     console.log(":: form submitted!!! ::");
-    post("http://localhost:8081/add-url", { url: url }).then((urlData) => {
+    postDetails(fetchUrl, { url: url }).then(function (urlData) {
       document.querySelector(
-        "#article-text",
-      ).innerHTML = `Text of the article: ${urlData.sentence_list[0].text}`;
-      document.querySelector(
-        "#article-agreement",
-      ).innerHTML = `Agreement of the article: ${urlData.agreement}`;
-      document.querySelector(
-        "#article-subjectivity",
-      ).innerHTML = `Subjectivity of the article: ${urlData.subjectivity}`;
-      document.querySelector(
-        "#article-confidence",
-      ).innerHTML = `Confidence of the article: ${urlData.confidence}`;
-      document.querySelector(
-        "#article-score_tag",
-      ).innerHTML = `Score_tag of the article: ${urlData.score_tag}`;
+        ".results",
+      ).innerHTML = `<h4> Agreement: ${urlData.agreement} </h4>
+      <h4> Score Tag: ${urlData.score_tag} </h4> 
+      <h4> Confidence: ${urlData.confidence} </h4>
+      <h4> Subjectivity: ${urlData.subjectivity} </h4>
+      <h4> Irony: ${urlData.irony} </h4>`;
     });
   } else {
-    alert("invaild URL,Please Enter New URL");
+    console.log(":: enter valid url please!!! ::");
   }
-};
+}
 export { handleSubmit };
