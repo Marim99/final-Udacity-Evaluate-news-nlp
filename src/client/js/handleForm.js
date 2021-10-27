@@ -18,11 +18,11 @@ const fetchUrl = "http://localhost:8081/add-url";
 function handleSubmit(event) {
   event.preventDefault();
 
-  // check what text was put into the form field
   let url = document.querySelector("#article-url").value;
   console.log("::: Form Submitted :::");
   fetch("http://localhost:8081/test");
-  if (Client.checkURL(url)) {
+  const checkURL = check(url);
+  if (checkURL) {
     console.log(":: form submitted!!! ::");
     postDetails(fetchUrl, { url: url }).then(function (urlData) {
       document.querySelector(
@@ -37,4 +37,11 @@ function handleSubmit(event) {
     console.log(":: enter valid url please!!! ::");
   }
 }
+const check = (url) => {
+  if (Client.checkURL(url)) {
+    return true;
+  } else {
+    return false;
+  }
+};
 export { handleSubmit };
