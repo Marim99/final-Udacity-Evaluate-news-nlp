@@ -27,11 +27,11 @@ function handleSubmit(event) {
     postDetails(fetchUrl, { url: url }).then(function (urlData) {
       document.querySelector(
         ".results",
-      ).innerHTML = `<h4> Agreement: ${urlData.agreement} </h4>
-      <h4> Score Tag: ${urlData.score_tag} </h4> 
-      <h4> Confidence: ${urlData.confidence} </h4>
-      <h4> Subjectivity: ${urlData.subjectivity} </h4>
-      <h4> Irony: ${urlData.irony} </h4>`;
+      ).innerHTML = `<h4> Agreement is: ${urlData.agreement} </h4>
+      <h4> Score Tag is: ${urlData.score_tag} </h4> 
+      <h4> Confidence is: ${urlData.confidence} </h4>
+      <h4> Subjectivity is: ${urlData.subjectivity} </h4>
+      <h4> Irony is: ${urlData.irony} </h4>`;
     });
   } else {
     console.log(":: enter valid url please!!! ::");
