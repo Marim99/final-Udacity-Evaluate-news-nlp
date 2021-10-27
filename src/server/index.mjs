@@ -2,25 +2,22 @@ import dotenv from "dotenv";
 dotenv.config();
 import path from "path";
 import aylien from "aylien_textapi";
-import bodyParser from "body-parser";
+
 import express from "express";
 import cors from "cors";
 import mockAPIResponse from "./mockAPI.js";
 import fetch from "node-fetch";
 const PORT = 8081; //server port 8081
+console.log(`your API KEY is ${myApiKey}`);
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+
 app.use(express.static("dist"));
 const myApiKey = process.env.API_KEY;
 var textapi = new aylien({
   application_key: myApiKey,
 });
-
-console.log(`your API KEY is ${myApiKey}`);
 
 app.post("/add-url", async (req, res) => {
   try {
