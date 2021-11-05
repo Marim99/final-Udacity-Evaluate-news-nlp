@@ -3,10 +3,10 @@ const postDetails = async (url = "", data = {}) => {
     method: "POST",
     mode: "cors",
     credentials: "same-origin",
-    body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify(data),
   });
   try {
     return await urlResponse.json();
@@ -21,10 +21,10 @@ function handleSubmit(event) {
   let url = document.querySelector("#article-url").value;
   console.log("::: Form Submitted :::");
   fetch("http://localhost:8081/test");
-  const checkURL = check(url);
-  if (checkURL) {
+  //const checkURL = check(url);
+  if (check(url)) {
     console.log(":: form submitted!!! ::");
-    postDetails(fetchUrl, { url: url }).then(function (urlData) {
+    postDetails(fetchUrl, { url: url }).then((urlData) => {
       document.querySelector(
         ".results",
       ).innerHTML = `<h4> Agreement is: ${urlData.agreement} </h4>
